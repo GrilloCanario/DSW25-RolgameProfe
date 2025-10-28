@@ -16,4 +16,10 @@ abstract class Personaje {
     public function subirNivel(): void{
         $this->nivel++;
     }
+
+    static public function lucha($personaje1,$personaje2){
+        $personaje2->puntosDeVida -= $personaje1->defender($personaje1->atacar());
+        $personaje1->puntosDeVida -= $personaje2->defender($personaje2->atacar());
+
+    }
 }
