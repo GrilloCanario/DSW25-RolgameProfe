@@ -17,9 +17,14 @@ abstract class Personaje {
         $this->nivel++;
     }
 
-    static public function lucha($personaje1,$personaje2){
-        $personaje2->puntosDeVida -= $personaje1->defender($personaje1->atacar());
-        $personaje1->puntosDeVida -= $personaje2->defender($personaje2->atacar());
+    public static function lucha(Personaje $atacante, Personaje $defensor): void
+    {
+        $daño = $atacante->atacar();
+        $dañoFinal = $defensor->defender($daño);
+        $defensor->puntosDeVida -= $dañoFinal;
 
+        $daño = $defensor->atacar();
+        $dañoFinal = $atacante->defender($daño);
+        $atacante->puntosDeVida -= $dañoFinal;
     }
 }

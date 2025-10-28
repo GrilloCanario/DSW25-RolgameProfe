@@ -12,8 +12,7 @@ class Mago extends Personaje {
 
     public function atacar(): int
     {
-        $ataque = $this->mana / 2;
-        return $ataque;
+        return $this->mana / 2;
     }
     
     public function defender(int $daño): int
